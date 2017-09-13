@@ -7,6 +7,7 @@ class Receipt extends Component {
     super(props);
     this.state = {total: 0};
   }
+  //consider making the checkboxes into selectable buttons
   render() {
     return (
       <div>
@@ -14,12 +15,29 @@ class Receipt extends Component {
         <h3>$ {this.state.total}</h3>
         <div>
           <button onClick={() => this.setState({total: this.state.total+1})} >+</button>
+          <div>
+            
+            <label>
+              <input type="checkbox" id="food" name="food" ></input>
+              Food
+            </label>
 
-          <input type="checkbox" id="food" name="food" ></input>
-          <label for="food">Food</label>
+            <label>
+              <input type="checkbox" id="bills" name="bills" ></input>
+              Bills
+            </label>
 
-          <input type="checkbox" id="bills" name="bills" ></input>
-          <label for="bills">Bills</label>
+            <label>
+              <input type="checkbox" id="clothes" name="clothes" ></input>
+              Clothes
+            </label>
+
+            <label>
+              <input type="checkbox" id="misc" name="misc" value="misc" ></input>
+              Miscellaneous
+            </label>
+
+          </div>
         </div>
       </div>
     );
@@ -30,13 +48,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
         <Receipt/>
       </div>
     );
