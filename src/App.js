@@ -5,40 +5,79 @@ import './App.css';
 class Receipt extends Component {
   constructor(props) {
     super(props);
-    this.state = {total: 0};
+    this.state = {total: 0, foodTotal: 0, billTotal: 0, clothesTotal: 0, miscTotal: 0,
+    categories:
+    {
+      food: false,
+      bills: false,
+      clothes: false,
+      misc: false
+    }
+  };
   }
   //consider making the checkboxes into selectable buttons
+  handleAdd () {
+    let newState = this.state;
+    newState.total++;
+    if (this.state.categories.food) {
+      newState.foodTotal++;
+    }
+    if (this.state.categories.bills) {
+      newState.billTotal++;
+    }
+    if (this.state.categories.clothes) {
+      newState.clothesTotal++;
+    }
+    if (this.state.categories.misc) {
+      newState.miscTotal++;
+    }
+    this.setState({newState});
+  }
+  handleCategory (category) {
+    let newCategories = this.state.categories;
+    newCategories[category] = !newCategories[category];
+    this.setState({categories: newCategories});
+
+  }
   render() {
     return (
       <div>
         <h2>Total Spent</h2>
         <h3>$ {this.state.total}</h3>
         <div>
-          <button onClick={() => this.setState({total: this.state.total+1})} >+</button>
+          <button onClick={() => this.handleAdd()} >+</button>
           <div>
             
             <label>
-              <input type="checkbox" id="food" name="food" ></input>
+              <input type="checkbox" id="food" name="food"
+               onClick={() => this.handleCategory("food")}></input>
               Food
             </label>
 
             <label>
-              <input type="checkbox" id="bills" name="bills" ></input>
+              <input type="checkbox" id="bills" name="bills"
+              onClick={() => this.handleCategory("bills")}></input>
               Bills
             </label>
 
             <label>
-              <input type="checkbox" id="clothes" name="clothes" ></input>
+              <input type="checkbox" id="clothes" name="clothes" 
+              onClick={() => this.handleCategory("clothes")}></input>
               Clothes
             </label>
 
             <label>
-              <input type="checkbox" id="misc" name="misc" value="misc" ></input>
+              <input type="checkbox" id="misc" name="misc" value="misc" 
+              onClick={() => this.handleCategory("misc")}></input>
               Miscellaneous
             </label>
 
           </div>
         </div>
+        <h3>Spent on Food: {this.state.foodTotal}</h3>
+        <h3>Spent on Bills: {this.state.billTotal}</h3>
+        <h3>Spent on Clothes: {this.state.clothesTotal}</h3>
+        <h3>Spent on Miscellaneous: {this.state.miscTotal}</h3>
       </div>
     );
   }
