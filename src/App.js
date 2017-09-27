@@ -74,10 +74,10 @@ class Receipt extends Component {
 
           </div>
         </div>
-        <h3>Spent on Food: {this.state.foodTotal}</h3>
-        <h3>Spent on Bills: {this.state.billTotal}</h3>
-        <h3>Spent on Clothes: {this.state.clothesTotal}</h3>
-        <h3>Spent on Miscellaneous: {this.state.miscTotal}</h3>
+        <h3>Spent on Food: {this.state.foodTotal} {parseInt(this.state.foodTotal * 100  / this.state.total)}%</h3>
+        <h3>Spent on Bills: {this.state.billTotal} {parseInt(this.state.billTotal * 100  / this.state.total)}%</h3>
+        <h3>Spent on Clothes: {this.state.clothesTotal} {parseInt(this.state.clothesTotal * 100  / this.state.total)}%</h3>
+        <h3>Spent on Miscellaneous: {this.state.miscTotal} {parseInt(this.state.miscTotal * 100  / this.state.total)}%</h3>
       </div>
     );
   }
